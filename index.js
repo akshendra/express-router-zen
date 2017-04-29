@@ -76,8 +76,7 @@ function better(object) {
     const routeMethod = match[1];
     const routePath = path.join(prefix, match[2]);
     const value = routes[key];
-
-    if (_.isObject(value)) {
+    if (_.isObject(value) && !_.isArray(value) && !_.isFunction(value)) {
       const moreBefore = (value.before || []).map(wrap);
       const moreAfter = (value.after || []).map(wrap);
       const fn = value.controller;

@@ -9,7 +9,7 @@ npm install -g express-router-gen
 ```js
   const express = require('express');
   const app = express();
-  const zen = require('express-router-gen');
+  const { better, wrap } = require('express-router-gen');
 
   // this is your controller
   const conf = {
@@ -32,5 +32,5 @@ npm install -g express-router-gen
   }
 
   // now use it
-  app.use('/', zen(conf));
+  app.use('/', better(conf));
 ```

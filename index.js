@@ -1,5 +1,5 @@
 
-const co = require('co');
+const bb = require('bluebird');
 const _ = require('lodash');
 const path = require('path');
 const express = require('express');
@@ -29,7 +29,7 @@ function isGenerator(value) {
  */
 function wrap(value) {
   if (isGenerator(value)) {
-    const fn = co.wrap(value);
+    const fn = bb.coroutine(value);
     // if it's an error handler
     if (value.length === 4) {
       return (err, req, res, next) => {
